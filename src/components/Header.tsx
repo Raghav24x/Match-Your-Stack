@@ -15,8 +15,9 @@ const Header = () => {
     <header className="w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <div className="flex items-center space-x-2">
-          <Link to="/" className="text-xl font-bold text-primary hover:text-primary/80">
-            Match Your Stack
+          <Link to="/" className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-primary/80">
+            <img src="/src/assets/logo.png" alt="Match Your Stack Logo" className="h-8 w-8" />
+            <span>Match Your Stack</span>
           </Link>
         </div>
         
