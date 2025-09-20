@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import HeroGraphic from "@/components/HeroGraphic";
 
 const Hero = () => {
   const { user } = useAuth();
@@ -10,7 +11,7 @@ const Hero = () => {
       {/* Subtle radial spotlight background */}
       <div className="absolute inset-0 bg-gradient-radial from-primary/20 via-transparent to-transparent opacity-30"></div>
       
-      <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-20">
+      <div className="relative z-10 container mx-auto px-4 md:px-6 py-16 md:py-24">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left column - Content */}
           <div className="space-y-8">
@@ -42,14 +43,9 @@ const Hero = () => {
             </p>
           </div>
           
-          {/* Right column - Visual element placeholder */}
-          <div className="hidden lg:flex items-center justify-center">
-            <div className="w-full max-w-md aspect-square rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-border/50 flex items-center justify-center">
-              <div className="text-center space-y-4">
-                <div className="text-4xl">📊</div>
-                <p className="text-sm text-muted-foreground">Creator Analytics</p>
-              </div>
-            </div>
+          {/* Right column - Hero Graphic */}
+          <div className="flex items-center justify-center lg:justify-end order-first lg:order-last">
+            <HeroGraphic />
           </div>
         </div>
       </div>
