@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import logoImage from "@/assets/logo.png";
 
 const Header = () => {
   const { user, signOut } = useAuth();
@@ -16,13 +17,13 @@ const Header = () => {
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
         <div className="flex items-center space-x-3">
           <Link to="/" className="flex items-center space-x-3 text-xl font-bold text-primary hover:text-primary/80">
-            <img src="/src/assets/logo.png" alt="Match Your Stack Logo" className="h-12 w-12" />
+            <img src={logoImage} alt="Match Your Stack Logo" className="h-12 w-12" />
             <span className="text-2xl">Match Your Stack</span>
           </Link>
         </div>
         
         <nav className="hidden md:flex items-center space-x-6">
-          <Link to="/directory" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+          <Link to="/directory" className="text-lg font-semibold text-foreground hover:text-primary transition-colors">
             📁 Directory
           </Link>
           {user && (
