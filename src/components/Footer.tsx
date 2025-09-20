@@ -60,7 +60,7 @@ const Footer = () => {
         
         <div className="mt-12 pt-8 border-t border-border/50 text-center">
           <p className="text-sm text-muted-foreground">
-            © 2024 Match Your Stack. All rights reserved.
+            © 2025 Match Your Stack. All rights reserved.
           </p>
         </div>
       </div>
