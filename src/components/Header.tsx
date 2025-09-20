@@ -14,16 +14,16 @@ const Header = () => {
   return (
     <header className="w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto flex h-14 items-center justify-between px-4">
-        <div className="flex items-center space-x-2">
-          <Link to="/" className="flex items-center space-x-2 text-xl font-bold text-primary hover:text-primary/80">
-            <img src="/src/assets/logo.png" alt="Match Your Stack Logo" className="h-8 w-8" />
-            <span>Match Your Stack</span>
+        <div className="flex items-center space-x-3">
+          <Link to="/" className="flex items-center space-x-3 text-xl font-bold text-primary hover:text-primary/80">
+            <img src="/src/assets/logo.png" alt="Match Your Stack Logo" className="h-12 w-12" />
+            <span className="text-2xl">Match Your Stack</span>
           </Link>
         </div>
         
         <nav className="hidden md:flex items-center space-x-6">
           <Link to="/directory" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
-            Directory
+            📁 Directory
           </Link>
           {user && (
             <Link to="/brief/new" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
