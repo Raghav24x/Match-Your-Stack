@@ -1,48 +1,67 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   return (
-    <footer className="bg-primary text-primary-foreground py-12">
-      <div className="container mx-auto px-4">
+    <footer className="bg-muted/30 border-t border-border/50 mt-auto relative">
+      {/* Subtle background texture */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/[0.02] to-secondary/[0.02] opacity-60"></div>
+      
+      <div className="relative container mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="col-span-1 md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">Match Your Stack</h3>
-            <p className="text-primary-foreground/80 mb-4 max-w-md">
-              Connecting companies with top Substack creators to build amazing content together.
+          <div className="space-y-4">
+            <h3 className="text-lg font-semibold text-secondary tracking-tight">Match Your Stack</h3>
+            <p className="text-sm text-foreground/80 leading-relaxed">
+              Connecting companies with talented Substack creators to build exceptional content strategies.
             </p>
           </div>
           
-          <div>
-            <h4 className="font-semibold mb-4">Platform</h4>
-            <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Directory</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Post Brief</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">For Creators</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">For Companies</a></li>
-            </ul>
+          <div className="space-y-4">
+            <h4 className="font-medium text-secondary">Platform</h4>
+            <div className="space-y-3">
+              <Link to="/directory" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                📁 Creator Directory
+              </Link>
+              <Link to="/auth" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                📝 Post a Brief
+              </Link>
+              <Link to="/auth" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                ✨ Join as Creator
+              </Link>
+            </div>
           </div>
           
-          <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-primary-foreground/80">
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">About</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Careers</a></li>
-              <li><a href="#" className="hover:text-primary-foreground transition-colors">Support</a></li>
-            </ul>
+          <div className="space-y-4">
+            <h4 className="font-medium text-secondary">Company</h4>
+            <div className="space-y-3">
+              <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                About Us
+              </a>
+              <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                Contact
+              </a>
+              <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                Support
+              </a>
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            <h4 className="font-medium text-secondary">Legal</h4>
+            <div className="space-y-3">
+              <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
+                Terms of Service
+              </a>
+            </div>
           </div>
         </div>
         
-        <div className="border-t border-primary-foreground/20 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-primary-foreground/60 text-sm">
-            © 2025 Match Your Stack. All rights reserved.
+        <div className="mt-12 pt-8 border-t border-border/50 text-center">
+          <p className="text-sm text-muted-foreground">
+            © 2024 Match Your Stack. All rights reserved.
           </p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="text-primary-foreground/60 hover:text-primary-foreground text-sm transition-colors">
-              Terms of Service
-            </a>
-          </div>
         </div>
       </div>
     </footer>

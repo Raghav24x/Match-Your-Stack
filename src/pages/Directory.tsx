@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
+import { Chip } from '@/components/ui/chip';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { Label } from '@/components/ui/label';
 import { supabase } from '@/integrations/supabase/client';
 import Header from '@/components/Header';
 import { ExternalLink, MessageSquare } from 'lucide-react';
@@ -111,10 +114,19 @@ const Directory = () => {
 
   const getAvailabilityColor = (availability: string) => {
     switch(availability) {
-      case 'open': return 'bg-green-100 text-green-800';
-      case 'limited': return 'bg-yellow-100 text-yellow-800';
-      case 'booked': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
+      case 'open': return 'bg-green-500/10 text-green-700 border-green-500/20';
+      case 'limited': return 'bg-yellow-500/10 text-yellow-700 border-yellow-500/20';
+      case 'booked': return 'bg-red-500/10 text-red-700 border-red-500/20';
+      default: return 'bg-muted text-muted-foreground border-border';
+    }
+  };
+
+  const getAvailabilityDot = (availability: string) => {
+    switch(availability) {
+      case 'open': return 'bg-green-500';
+      case 'limited': return 'bg-yellow-500';
+      case 'booked': return 'bg-red-500';
+      default: return 'bg-muted-foreground';
     }
   };
 
@@ -132,94 +144,117 @@ const Directory = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <div className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-primary mb-2">Creator Directory</h1>
-          <p className="text-muted-foreground">Discover talented Substack creators for your next project</p>
+      <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
+        <div className="mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4 tracking-tight">Creator Directory</h1>
+          <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">Discover talented Substack creators for your next project</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Filters Sidebar */}
           <div className="lg:col-span-1">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-lg">Filters</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">Search</label>
-                  <Input
-                    value={filters.search}
-                    onChange={(e) => setFilters({...filters, search: e.target.value})}
-                    placeholder="Search creators..."
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">Role Type</label>
-                  <select
-                    value={filters.role_type}
-                    onChange={(e) => setFilters({...filters, role_type: e.target.value})}
-                    className="w-full p-2 border rounded-md"
-                  >
-                    <option value="">All roles</option>
-                    <option value="ghostwriter">Ghostwriter</option>
-                    <option value="pm-writes">PM Writes</option>
-                    <option value="content-writer">Content Writer</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">Pricing Tier</label>
-                  <select
-                    value={filters.pricing_tier}
-                    onChange={(e) => setFilters({...filters, pricing_tier: e.target.value})}
-                    className="w-full p-2 border rounded-md"
-                  >
-                    <option value="">All pricing</option>
-                    <option value="$">$ Budget-friendly</option>
-                    <option value="$$">$$ Mid-range</option>
-                    <option value="$$$">$$$ Premium</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">Availability</label>
-                  <select
-                    value={filters.availability}
-                    onChange={(e) => setFilters({...filters, availability: e.target.value})}
-                    className="w-full p-2 border rounded-md"
-                  >
-                    <option value="">All availability</option>
-                    <option value="open">Open</option>
-                    <option value="limited">Limited</option>
-                    <option value="booked">Booked</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">Niches</label>
-                  <div className="space-y-2 max-h-40 overflow-y-auto">
-                    {allNiches.map(niche => (
-                      <label key={niche} className="flex items-center space-x-2">
-                        <input
-                          type="checkbox"
-                          checked={selectedNiches.includes(niche)}
-                          onChange={() => toggleNiche(niche)}
-                          className="rounded"
-                        />
-                        <span className="text-sm">{niche}</span>
-                      </label>
-                    ))}
+            <div className="sticky top-24">
+              <Card className="rounded-2xl border-border/50">
+                <CardHeader>
+                  <CardTitle className="text-lg text-secondary">Filters</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-6">
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-2 block">Search</Label>
+                    <Input
+                      value={filters.search}
+                      onChange={(e) => setFilters({...filters, search: e.target.value})}
+                      placeholder="Search creators..."
+                      className="rounded-2xl border-border/50"
+                    />
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-3 block">Role Type</Label>
+                    <RadioGroup 
+                      value={filters.role_type} 
+                      onValueChange={(value) => setFilters({...filters, role_type: value})}
+                      className="space-y-2"
+                    >
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="" id="all-roles" />
+                        <Label htmlFor="all-roles" className="text-sm">All roles</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="ghostwriter" id="ghostwriter" />
+                        <Label htmlFor="ghostwriter" className="text-sm">Ghostwriter</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="pm-writes" id="pm-writes" />
+                        <Label htmlFor="pm-writes" className="text-sm">PM Writes</Label>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="content-writer" id="content-writer" />
+                        <Label htmlFor="content-writer" className="text-sm">Content Writer</Label>
+                      </div>
+                    </RadioGroup>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-3 block">Pricing Tier</Label>
+                    <div className="space-y-2">
+                      {['', '$', '$$', '$$$'].map((tier) => (
+                        <Chip
+                          key={tier}
+                          variant="filter"
+                          selected={filters.pricing_tier === tier}
+                          onClick={() => setFilters({...filters, pricing_tier: tier})}
+                          className="mr-2 mb-2 cursor-pointer"
+                        >
+                          {tier === '' ? 'All pricing' : `${tier} ${getPricingLabel(tier)}`}
+                        </Chip>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-3 block">Availability</Label>
+                    <div className="space-y-2">
+                      {['', 'open', 'limited', 'booked'].map((availability) => (
+                        <Chip
+                          key={availability}
+                          variant="filter"
+                          selected={filters.availability === availability}
+                          onClick={() => setFilters({...filters, availability: availability})}
+                          className="mr-2 mb-2 cursor-pointer capitalize"
+                        >
+                          {availability === '' ? 'All availability' : availability}
+                        </Chip>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-3 block">Niches</Label>
+                    <div className="max-h-40 overflow-y-auto space-y-1">
+                      <div className="flex flex-wrap gap-1">
+                        {allNiches.map(niche => (
+                          <Chip
+                            key={niche}
+                            variant="filter"
+                            selected={selectedNiches.includes(niche)}
+                            onClick={() => toggleNiche(niche)}
+                            className="text-xs cursor-pointer"
+                          >
+                            {niche}
+                          </Chip>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
           </div>
 
           {/* Creators Grid */}
           <div className="lg:col-span-3">
-            <div className="mb-4">
+            <div className="mb-6">
               <p className="text-sm text-muted-foreground">
                 Showing {filteredCreators.length} of {creators.length} creators
               </p>
@@ -227,70 +262,76 @@ const Directory = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {filteredCreators.map((creator) => (
-                <Card key={creator.id} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
+                <Card key={creator.id} className="hover:shadow-lg hover:-translate-y-1 transition-all duration-200 rounded-2xl border-border/50">
+                  <CardHeader className="pb-4">
                     <div className="flex justify-between items-start">
-                      <div>
-                        <CardTitle className="text-xl">{creator.name}</CardTitle>
-                        <CardDescription className="capitalize">
-                          {creator.role_type?.replace('-', ' ')}
-                        </CardDescription>
+                      <div className="flex items-start space-x-3">
+                        <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+                          <span className="text-lg font-semibold text-primary">
+                            {creator.name?.split(' ').map(n => n[0]).join('').toUpperCase()}
+                          </span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-lg text-secondary">{creator.name}</CardTitle>
+                          <Badge variant="role-match" className="text-xs mt-1">
+                            {creator.role_type?.replace('-', ' ')}
+                          </Badge>
+                        </div>
                       </div>
-                      <Badge className={getAvailabilityColor(creator.availability)}>
-                        {creator.availability}
-                      </Badge>
+                      <div className="flex items-center space-x-2">
+                        <div className={`w-2 h-2 rounded-full ${getAvailabilityDot(creator.availability)}`}></div>
+                        <Badge className={`text-xs border ${getAvailabilityColor(creator.availability)}`}>
+                          {creator.availability}
+                        </Badge>
+                      </div>
                     </div>
                   </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {creator.bio && (
-                        <p className="text-sm text-muted-foreground line-clamp-3">
-                          {creator.bio}
-                        </p>
-                      )}
+                  <CardContent className="space-y-4">
+                    {creator.bio && (
+                      <p className="text-sm text-foreground/80 line-clamp-3 leading-relaxed">
+                        {creator.bio}
+                      </p>
+                    )}
 
-                      {creator.niches && creator.niches.length > 0 && (
-                        <div>
-                          <div className="flex flex-wrap gap-1">
-                            {creator.niches.slice(0, 3).map((niche) => (
-                              <Badge key={niche} variant="outline" className="text-xs">
-                                {niche}
-                              </Badge>
-                            ))}
-                            {creator.niches.length > 3 && (
-                              <Badge variant="outline" className="text-xs">
-                                +{creator.niches.length - 3} more
-                              </Badge>
-                            )}
-                          </div>
-                        </div>
-                      )}
+                    {creator.niches && creator.niches.length > 0 && (
+                      <div className="flex flex-wrap gap-1">
+                        {creator.niches.slice(0, 5).map((niche) => (
+                          <Chip key={niche} variant="default" className="text-xs">
+                            {niche}
+                          </Chip>
+                        ))}
+                        {creator.niches.length > 5 && (
+                          <Chip variant="default" className="text-xs">
+                            +{creator.niches.length - 5}
+                          </Chip>
+                        )}
+                      </div>
+                    )}
 
-                      <div className="flex justify-between items-center text-sm">
+                    <div className="flex justify-between items-center text-sm text-muted-foreground">
+                      <span className="font-medium">
+                        {creator.pricing_tier} {getPricingLabel(creator.pricing_tier)}
+                      </span>
+                      {creator.audience_size && (
                         <span>
-                          <strong>Pricing:</strong> {getPricingLabel(creator.pricing_tier)}
+                          {creator.audience_size.toLocaleString()} subscribers
                         </span>
-                        {creator.audience_size && (
-                          <span>
-                            <strong>Audience:</strong> {creator.audience_size.toLocaleString()}
-                          </span>
-                        )}
-                      </div>
+                      )}
+                    </div>
 
-                      <div className="flex gap-2 pt-2">
-                        {creator.substack_url && (
-                          <Button variant="outline" size="sm" asChild>
-                            <a href={creator.substack_url} target="_blank" rel="noopener noreferrer">
-                              <ExternalLink size={16} className="mr-1" />
-                              Substack
-                            </a>
-                          </Button>
-                        )}
-                        <Button variant="cta" size="sm">
-                          <MessageSquare size={16} className="mr-1" />
-                          Request Proposal
+                    <div className="flex gap-2 pt-2">
+                      {creator.substack_url && (
+                        <Button variant="outline" size="sm" asChild className="rounded-2xl flex-1">
+                          <a href={creator.substack_url} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink size={16} className="mr-1" />
+                            Substack
+                          </a>
                         </Button>
-                      </div>
+                      )}
+                      <Button variant="cta" size="sm" className="rounded-2xl flex-1">
+                        <MessageSquare size={16} className="mr-1" />
+                        Message
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -298,19 +339,22 @@ const Directory = () => {
             </div>
 
             {filteredCreators.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-muted-foreground">No creators match your current filters.</p>
-                <Button 
-                  variant="outline" 
-                  className="mt-4"
-                  onClick={() => {
-                    setFilters({role_type: '', pricing_tier: '', availability: '', search: ''});
-                    setSelectedNiches([]);
-                  }}
-                >
-                  Clear Filters
-                </Button>
-              </div>
+              <Card className="text-center py-12 rounded-2xl border-border/50">
+                <CardContent>
+                  <div className="text-6xl mb-4">🔍</div>
+                  <p className="text-muted-foreground mb-4">No creators match your current filters.</p>
+                  <Button 
+                    variant="outline" 
+                    className="rounded-2xl"
+                    onClick={() => {
+                      setFilters({role_type: '', pricing_tier: '', availability: '', search: ''});
+                      setSelectedNiches([]);
+                    }}
+                  >
+                    Clear Filters
+                  </Button>
+                </CardContent>
+              </Card>
             )}
           </div>
         </div>

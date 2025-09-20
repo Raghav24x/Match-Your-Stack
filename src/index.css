@@ -8,43 +8,43 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Substack-inspired color palette */
-    --background: 0 0% 100%;
-    --foreground: 34 11% 16%;
+    /* Cash & Cache brand palette */
+    --background: 36 85% 97%; /* #FEF9F4 */
+    --foreground: 214 92% 13%; /* #081623 */
 
-    --card: 0 0% 100%;
-    --card-foreground: 34 11% 16%;
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 214 92% 13%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 34 11% 16%;
+    --popover-foreground: 214 92% 13%;
 
-    /* Deep brown as primary */
-    --primary: 34 11% 16%;
-    --primary-foreground: 0 0% 100%;
+    /* Primary blue #2E82D6 */
+    --primary: 208 67% 51%;
+    --primary-foreground: 36 85% 97%; /* #FEF9F4 */
 
-    /* Light brown/beige as secondary */
-    --secondary: 34 15% 95%;
-    --secondary-foreground: 34 11% 16%;
+    /* Navy for headings/UI accents #063264 */
+    --secondary: 214 92% 20%; /* navy */
+    --secondary-foreground: 36 85% 97%;
 
-    --muted: 34 15% 95%;
-    --muted-foreground: 34 11% 45%;
+    --muted: 216 64% 95%; /* #EAF2FB */
+    --muted-foreground: 214 92% 20%; /* navy */
 
-    /* Deep blue as accent */
-    --accent: 240 100% 27%;
-    --accent-foreground: 0 0% 100%;
+    /* Navy accent */
+    --accent: 214 92% 20%;
+    --accent-foreground: 36 85% 97%;
 
-    /* Vibrant orange for CTAs */
-    --cta: 20 100% 55%;
-    --cta-foreground: 0 0% 100%;
+    /* Primary for CTAs */
+    --cta: 208 67% 51%; /* #2E82D6 */
+    --cta-foreground: 36 85% 97%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive-foreground: 36 85% 97%;
 
-    --border: 34 15% 90%;
-    --input: 34 15% 95%;
-    --ring: 20 100% 55%;
+    --border: 216 45% 90%; /* #E6ECF5 */
+    --input: 216 64% 95%;
+    --ring: 208 67% 51%; /* primary blue for focus */
 
-    --radius: 0.5rem;
+    --radius: 1rem; /* rounded-2xl */
 
     --sidebar-background: 0 0% 98%;
 
@@ -64,33 +64,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 214 92% 13%; /* #081623 */
+    --foreground: 36 85% 97%; /* #FEF9F4 */
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 210 60% 20%; /* #0B1E34 */
+    --card-foreground: 36 85% 97%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 210 60% 20%;
+    --popover-foreground: 36 85% 97%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 208 67% 51%; /* stays #2E82D6 */
+    --primary-foreground: 36 85% 97%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 60% 20%;
+    --secondary-foreground: 36 85% 97%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 60% 20%;
+    --muted-foreground: 0 0% 80%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 210 60% 20%;
+    --accent-foreground: 36 85% 97%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 36 85% 97%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 207 55% 31%; /* #13304F */
+    --input: 210 60% 20%;
+    --ring: 208 67% 51%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -108,6 +108,12 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
   }
 }
