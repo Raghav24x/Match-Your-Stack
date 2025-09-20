@@ -17,7 +17,8 @@ const Directory = () => {
     role_type: '',
     pricing_tier: '',
     availability: '',
-    search: ''
+    search: '',
+    engagement: ''
   });
   const [selectedNiches, setSelectedNiches] = useState<string[]>([]);
   const [allNiches, setAllNiches] = useState<string[]>([]);
@@ -70,6 +71,14 @@ const Directory = () => {
       
       // Availability filter
       if (filters.availability && creator.availability !== filters.availability) return false;
+      
+      // Engagement filter
+      if (filters.engagement) {
+        const hasEngagement = creator.subscribers > 0 || creator.posts_count > 0 || creator.activity_score > 0;
+        if (filters.engagement === 'high' && (creator.subscribers < 1000 || creator.activity_score < 5)) return false;
+        if (filters.engagement === 'medium' && (creator.subscribers < 500 || !hasEngagement)) return false;
+        if (filters.engagement === 'low' && hasEngagement) return false;
+      }
       
       // Search filter
       if (filters.search) {
@@ -146,7 +155,7 @@ const Directory = () => {
       <Header />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4 tracking-tight">Creator Directory</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4 tracking-tight">🤝 Creator Directory</h1>
           <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">Discover talented Substack creators for your next project</p>
         </div>
 
@@ -224,6 +233,28 @@ const Directory = () => {
                           className="mr-2 mb-2 cursor-pointer capitalize"
                         >
                           {availability === '' ? 'All availability' : availability}
+                        </Chip>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-medium text-secondary mb-3 block">Engagement</Label>
+                    <div className="space-y-2">
+                      {[
+                        { value: '', label: 'All levels' },
+                        { value: 'high', label: 'High (1K+ subs, 5+ partnerships)' },
+                        { value: 'medium', label: 'Medium (500+ subs)' },
+                        { value: 'low', label: 'Low engagement' }
+                      ].map((engagement) => (
+                        <Chip
+                          key={engagement.value}
+                          variant="filter"
+                          selected={filters.engagement === engagement.value}
+                          onClick={() => setFilters({...filters, engagement: engagement.value})}
+                          className="mr-2 mb-2 cursor-pointer text-xs"
+                        >
+                          {engagement.label}
                         </Chip>
                       ))}
                     </div>
@@ -308,15 +339,32 @@ const Directory = () => {
                       </div>
                     )}
 
-                    <div className="flex justify-between items-center text-sm text-muted-foreground">
-                      <span className="font-medium">
-                        {creator.pricing_tier} {getPricingLabel(creator.pricing_tier)}
-                      </span>
-                      {creator.audience_size && (
-                        <span>
-                          {creator.audience_size.toLocaleString()} subscribers
+                    <div className="space-y-2">
+                      <div className="flex justify-between items-center text-sm text-muted-foreground">
+                        <span className="font-medium">
+                          {creator.pricing_tier} {getPricingLabel(creator.pricing_tier)}
                         </span>
-                      )}
+                        {creator.audience_size && (
+                          <span>
+                            {creator.audience_size.toLocaleString()} subscribers
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* Engagement metrics */}
+                      <div className="flex justify-between items-center text-xs text-muted-foreground">
+                        <div className="flex gap-3">
+                          {creator.subscribers && (
+                            <span>{creator.subscribers.toLocaleString()} subs</span>
+                          )}
+                          {creator.posts_count && (
+                            <span>{creator.posts_count} posts</span>
+                          )}
+                          {creator.activity_score && (
+                            <span>{creator.activity_score} partnerships</span>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     <div className="flex gap-2 pt-2">
@@ -347,7 +395,7 @@ const Directory = () => {
                     variant="outline" 
                     className="rounded-2xl"
                     onClick={() => {
-                      setFilters({role_type: '', pricing_tier: '', availability: '', search: ''});
+                      setFilters({role_type: '', pricing_tier: '', availability: '', search: '', engagement: ''});
                       setSelectedNiches([]);
                     }}
                   >

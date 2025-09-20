@@ -99,6 +99,7 @@ export type Database = {
       }
       creators: {
         Row: {
+          activity_score: number | null
           audience_size: number | null
           availability: string | null
           bio: string | null
@@ -107,13 +108,16 @@ export type Database = {
           linkedin_url: string | null
           name: string
           niches: string[] | null
+          posts_count: number | null
           pricing_tier: string | null
           role_type: string
           samples: string[] | null
+          subscribers: number | null
           substack_url: string | null
           user_id: string
         }
         Insert: {
+          activity_score?: number | null
           audience_size?: number | null
           availability?: string | null
           bio?: string | null
@@ -122,13 +126,16 @@ export type Database = {
           linkedin_url?: string | null
           name: string
           niches?: string[] | null
+          posts_count?: number | null
           pricing_tier?: string | null
           role_type: string
           samples?: string[] | null
+          subscribers?: number | null
           substack_url?: string | null
           user_id: string
         }
         Update: {
+          activity_score?: number | null
           audience_size?: number | null
           availability?: string | null
           bio?: string | null
@@ -137,9 +144,11 @@ export type Database = {
           linkedin_url?: string | null
           name?: string
           niches?: string[] | null
+          posts_count?: number | null
           pricing_tier?: string | null
           role_type?: string
           samples?: string[] | null
+          subscribers?: number | null
           substack_url?: string | null
           user_id?: string
         }
