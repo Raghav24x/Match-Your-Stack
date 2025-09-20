@@ -4,24 +4,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 const Features = () => {
   const features = [
     {
-      title: "Simple publishing",
-      description: "Write and publish in minutes. No complex setup, no technical hurdles. Just you and your words.",
-      icon: "✍️"
+      title: "Smart Matching",
+      description: "Our algorithm matches companies with creators based on role type, niches, and budget fit.",
+      icon: "🎯"
     },
     {
-      title: "Built-in audience",
-      description: "Reach readers who are actively looking for great content. No need to start from zero.",
-      icon: "👥"
+      title: "Quality Creators",
+      description: "Access verified Substack creators with proven track records and engaged audiences.",
+      icon: "✨"
     },
     {
-      title: "Subscriber management",
-      description: "Easy tools to grow and engage your subscriber base. Email newsletters that actually get read.",
-      icon: "📧"
+      title: "Simple Workflow",
+      description: "Post a brief, review matches, shortlist favorites, and start collaborating in minutes.",
+      icon: "⚡"
     },
     {
-      title: "Beautiful design",
-      description: "Your writing deserves to look great. Clean, readable layouts that put your content first.",
-      icon: "🎨"
+      title: "Built-in Messaging",
+      description: "Connect directly with creators through our integrated messaging system.",
+      icon: "💬"
     }
   ];
 
@@ -30,10 +30,10 @@ const Features = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Everything you need to publish
+            How Match Your Stack Works
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            From your first post to building a thriving community, we've got the tools to help you succeed.
+            Simple, effective creator matching in three easy steps.
           </p>
         </div>
         
@@ -55,7 +55,7 @@ const Features = () => {
         
         <div className="text-center mt-16">
           <Button variant="cta" size="lg">
-            Get started for free
+            Get started today
           </Button>
         </div>
       </div>
