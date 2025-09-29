@@ -22,13 +22,13 @@ const HeroGraphic = () => {
   }, []);
 
   const colors = {
-    primary: "#2E82D6",
-    navy: isDark ? "#4A90E2" : "#063264", // Lighter blue in dark mode
+    primary: isDark ? "#ffffff" : "#2E82D6", // White in dark mode, blue in light mode
+    navy: isDark ? "#ffffff" : "#063264", // White in dark mode, navy in light mode
     background: isDark ? "#081623" : "#FEF9F4",
     lines: isDark ? "rgba(255, 255, 255, 0.25)" : "rgba(6, 50, 100, 0.13)", // More visible lines in dark mode
-    cardBg: isDark ? "rgba(200, 220, 255, 0.15)" : "rgba(255, 255, 255, 0.9)", // Lighter card background in dark mode
-    cardBorder: isDark ? "rgba(138, 186, 255, 0.4)" : "rgba(6, 50, 100, 0.1)", // More visible borders in dark mode
-    text: isDark ? "#ffffff" : "#000000" // Ensure text is visible
+    cardBg: isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.9)", // Light transparent in dark mode
+    cardBorder: isDark ? "rgba(255, 255, 255, 0.3)" : "rgba(6, 50, 100, 0.1)", // White border in dark mode
+    text: isDark ? "#000000" : "#ffffff" // Black text on white elements in dark mode
   };
 
   return (
