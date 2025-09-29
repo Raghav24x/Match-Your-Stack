@@ -24,6 +24,7 @@ const HeroGraphic = () => {
   const colors = {
     primary: isDark ? "#ffffff" : "#2E82D6", // White in dark mode, blue in light mode
     navy: isDark ? "#ffffff" : "#063264", // White in dark mode, navy in light mode
+    accentBlue: isDark ? "#60A5FA" : "#063264", // Lighter blue in dark mode for company icons
     background: isDark ? "#081623" : "#FEF9F4",
     lines: isDark ? "rgba(255, 255, 255, 0.25)" : "rgba(6, 50, 100, 0.13)", // More visible lines in dark mode
     cardBg: isDark ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.9)", // Light transparent in dark mode
@@ -117,7 +118,7 @@ const HeroGraphic = () => {
             stroke={colors.cardBorder}
             strokeWidth="1"
           />
-          <rect x="28" y="78" width="8" height="8" rx="2" fill={colors.navy} />
+          <rect x="28" y="78" width="8" height="8" rx="2" fill={colors.accentBlue} />
           <rect x="40" y="78" width="20" height="3" rx="1" fill={colors.lines} />
           <rect x="40" y="84" width="15" height="2" rx="1" fill={colors.lines} />
           <rect x="28" y="92" width="35" height="2" rx="1" fill={colors.lines} />
@@ -151,7 +152,7 @@ const HeroGraphic = () => {
             stroke={colors.cardBorder}
             strokeWidth="1"
           />
-          <rect x="28" y="198" width="8" height="8" rx="2" fill={colors.navy} />
+          <rect x="28" y="198" width="8" height="8" rx="2" fill={colors.accentBlue} />
           <rect x="40" y="198" width="20" height="3" rx="1" fill={colors.lines} />
           <rect x="40" y="204" width="15" height="2" rx="1" fill={colors.lines} />
           <rect x="28" y="212" width="35" height="2" rx="1" fill={colors.lines} />
