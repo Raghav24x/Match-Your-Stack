@@ -23,11 +23,12 @@ const HeroGraphic = () => {
 
   const colors = {
     primary: "#2E82D6",
-    navy: "#063264", 
+    navy: isDark ? "#4A90E2" : "#063264", // Lighter blue in dark mode
     background: isDark ? "#081623" : "#FEF9F4",
-    lines: isDark ? "rgba(255, 255, 255, 0.13)" : "rgba(6, 50, 100, 0.13)",
-    cardBg: isDark ? "rgba(11, 30, 52, 0.8)" : "rgba(255, 255, 255, 0.9)",
-    cardBorder: isDark ? "rgba(46, 130, 214, 0.2)" : "rgba(6, 50, 100, 0.1)"
+    lines: isDark ? "rgba(255, 255, 255, 0.25)" : "rgba(6, 50, 100, 0.13)", // More visible lines in dark mode
+    cardBg: isDark ? "rgba(200, 220, 255, 0.15)" : "rgba(255, 255, 255, 0.9)", // Lighter card background in dark mode
+    cardBorder: isDark ? "rgba(138, 186, 255, 0.4)" : "rgba(6, 50, 100, 0.1)", // More visible borders in dark mode
+    text: isDark ? "#ffffff" : "#000000" // Ensure text is visible
   };
 
   return (
@@ -200,27 +201,27 @@ const HeroGraphic = () => {
           {/* Creator 1 */}
           <circle cx="340" cy="90" r="20" fill={colors.cardBg} stroke={colors.cardBorder} strokeWidth="1" />
           <circle cx="340" cy="90" r="12" fill={colors.primary} />
-          <text x="340" y="95" textAnchor="middle" fontSize="10" fill={colors.background} fontFamily="Inter, sans-serif" fontWeight="600">JD</text>
+          <text x="340" y="95" textAnchor="middle" fontSize="10" fill={colors.text} fontFamily="Inter, sans-serif" fontWeight="600">JD</text>
 
           {/* Creator 2 */}
           <circle cx="340" cy="140" r="20" fill={colors.cardBg} stroke={colors.cardBorder} strokeWidth="1" />
           <circle cx="340" cy="140" r="12" fill={colors.navy} />
-          <text x="340" y="145" textAnchor="middle" fontSize="10" fill={colors.background} fontFamily="Inter, sans-serif" fontWeight="600">AS</text>
+          <text x="340" y="145" textAnchor="middle" fontSize="10" fill={colors.text} fontFamily="Inter, sans-serif" fontWeight="600">AS</text>
 
           {/* Creator 3 */}
           <circle cx="340" cy="190" r="20" fill={colors.cardBg} stroke={colors.cardBorder} strokeWidth="1" />
           <circle cx="340" cy="190" r="12" fill={colors.primary} />
-          <text x="340" y="195" textAnchor="middle" fontSize="10" fill={colors.background} fontFamily="Inter, sans-serif" fontWeight="600">MK</text>
+          <text x="340" y="195" textAnchor="middle" fontSize="10" fill={colors.text} fontFamily="Inter, sans-serif" fontWeight="600">MK</text>
 
           {/* Creator 4 */}
           <circle cx="320" cy="215" r="18" fill={colors.cardBg} stroke={colors.cardBorder} strokeWidth="1" />
           <circle cx="320" cy="215" r="11" fill={colors.navy} />
-          <text x="320" y="220" textAnchor="middle" fontSize="9" fill={colors.background} fontFamily="Inter, sans-serif" fontWeight="600">LR</text>
+          <text x="320" y="220" textAnchor="middle" fontSize="9" fill={colors.text} fontFamily="Inter, sans-serif" fontWeight="600">LR</text>
 
           {/* Creator 5 */}
           <circle cx="320" cy="65" r="18" fill={colors.cardBg} stroke={colors.cardBorder} strokeWidth="1" />
           <circle cx="320" cy="65" r="11" fill={colors.primary} />
-          <text x="320" y="70" textAnchor="middle" fontSize="9" fill={colors.background} fontFamily="Inter, sans-serif" fontWeight="600">TB</text>
+          <text x="320" y="70" textAnchor="middle" fontSize="9" fill={colors.text} fontFamily="Inter, sans-serif" fontWeight="600">TB</text>
         </g>
 
         {/* Connection lines */}
