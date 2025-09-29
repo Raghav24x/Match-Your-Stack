@@ -9,14 +9,14 @@ const Footer = () => {
       <div className="relative container mx-auto px-4 md:px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-secondary tracking-tight">Match Your Stack</h3>
+            <h3 className="text-lg font-semibold text-foreground tracking-tight">Match Your Stack</h3>
             <p className="text-sm text-foreground/80 leading-relaxed">
               Connecting companies with talented Substack creators to build exceptional content strategies.
             </p>
           </div>
           
           <div className="space-y-4">
-            <h4 className="font-medium text-secondary">Platform</h4>
+            <h4 className="font-medium text-foreground">Platform</h4>
             <div className="space-y-3">
               <Link to="/directory" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 📁 Creator Directory
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
           
           <div className="space-y-4">
-            <h4 className="font-medium text-secondary">Company</h4>
+            <h4 className="font-medium text-foreground">Company</h4>
             <div className="space-y-3">
               <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 About Us
@@ -46,7 +46,7 @@ const Footer = () => {
           </div>
           
           <div className="space-y-4">
-            <h4 className="font-medium text-secondary">Legal</h4>
+            <h4 className="font-medium text-foreground">Legal</h4>
             <div className="space-y-3">
               <a href="#" className="block text-sm text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy

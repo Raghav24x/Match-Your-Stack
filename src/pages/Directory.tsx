@@ -155,7 +155,7 @@ const Directory = () => {
       <Header />
       <div className="container mx-auto px-4 md:px-6 py-16 md:py-20">
         <div className="mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold text-secondary mb-4 tracking-tight">🤝 Creator Directory</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4 tracking-tight">🤝 Creator Directory</h1>
           <p className="text-lg text-foreground/80 max-w-3xl leading-relaxed">Discover talented Substack creators for your next project</p>
         </div>
 
@@ -165,11 +165,11 @@ const Directory = () => {
             <div className="sticky top-24">
               <Card className="rounded-2xl border-border/50">
                 <CardHeader>
-                  <CardTitle className="text-lg text-secondary">Filters</CardTitle>
+                  <CardTitle className="text-lg text-foreground">Filters</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-2 block">Search</Label>
+                    <Label className="text-sm font-medium text-foreground mb-2 block">Search</Label>
                     <Input
                       value={filters.search}
                       onChange={(e) => setFilters({...filters, search: e.target.value})}
@@ -179,7 +179,7 @@ const Directory = () => {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-3 block">Role Type</Label>
+                    <Label className="text-sm font-medium text-foreground mb-3 block">Role Type</Label>
                     <RadioGroup 
                       value={filters.role_type} 
                       onValueChange={(value) => setFilters({...filters, role_type: value})}
@@ -205,7 +205,7 @@ const Directory = () => {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-3 block">Pricing Tier</Label>
+                    <Label className="text-sm font-medium text-foreground mb-3 block">Pricing Tier</Label>
                     <div className="space-y-2">
                       {['', '$', '$$', '$$$'].map((tier) => (
                         <Chip
@@ -222,7 +222,7 @@ const Directory = () => {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-3 block">Availability</Label>
+                    <Label className="text-sm font-medium text-foreground mb-3 block">Availability</Label>
                     <div className="space-y-2">
                       {['', 'open', 'limited', 'booked'].map((availability) => (
                         <Chip
@@ -239,7 +239,7 @@ const Directory = () => {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-3 block">Engagement</Label>
+                    <Label className="text-sm font-medium text-foreground mb-3 block">Engagement</Label>
                     <div className="space-y-2">
                       {[
                         { value: '', label: 'All levels' },
@@ -261,7 +261,7 @@ const Directory = () => {
                   </div>
 
                   <div>
-                    <Label className="text-sm font-medium text-secondary mb-3 block">Niches</Label>
+                    <Label className="text-sm font-medium text-foreground mb-3 block">Niches</Label>
                     <div className="max-h-40 overflow-y-auto space-y-1">
                       <div className="flex flex-wrap gap-1">
                         {allNiches.map(niche => (
@@ -303,7 +303,7 @@ const Directory = () => {
                           </span>
                         </div>
                         <div>
-                          <CardTitle className="text-lg text-secondary">{creator.name}</CardTitle>
+                          <CardTitle className="text-lg text-foreground">{creator.name}</CardTitle>
                           <Badge variant="role-match" className="text-xs mt-1">
                             {creator.role_type?.replace('-', ' ')}
                           </Badge>

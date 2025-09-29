@@ -15,7 +15,7 @@ const Hero = () => {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Left column - Content */}
           <div className="space-y-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-secondary leading-tight tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight tracking-tight">
               Match Your <br />
               <span className="text-primary">Stack</span>
             </h1>
@@ -32,7 +32,7 @@ const Hero = () => {
                 </Button>
               </Link>
               <Link to={user ? "/onboard/creator" : "/auth"}>
-                <Button variant="outline" size="lg" className="text-base px-8 py-4 rounded-2xl font-medium border-secondary/20 text-secondary hover:bg-secondary hover:text-background">
+                <Button variant="outline" size="lg" className="text-base px-8 py-4 rounded-2xl font-medium border-secondary/20 text-foreground hover:bg-secondary hover:text-background">
                   Join as Creator
                 </Button>
               </Link>

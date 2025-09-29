@@ -29,7 +29,7 @@ const Features = () => {
     <section className="py-16 md:py-20 bg-muted/30">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-secondary mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
             How Match Your Stack Works
           </h2>
           <p className="text-lg text-foreground/80 max-w-3xl mx-auto leading-relaxed">
@@ -42,7 +42,7 @@ const Features = () => {
             <Card key={index} className="text-center border-border/50 hover:border-primary/20 transition-all duration-200 hover:shadow-lg rounded-2xl">
               <CardHeader className="pb-4">
                 <div className="text-4xl mb-4">{feature.icon}</div>
-                <CardTitle className="text-xl text-secondary tracking-tight">{feature.title}</CardTitle>
+                <CardTitle className="text-xl text-foreground tracking-tight">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-muted-foreground leading-relaxed">
